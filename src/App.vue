@@ -1,17 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div style="background-color:#71C19C;">
+
+    <SpinWheel msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SpinWheel from './components/SpinWheel.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    SpinWheel
   }
 }
 </script>
