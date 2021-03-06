@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color:#71C19C;">
+  <div style="background-color:#7856D4;">
 
     <SpinWheel msg="Welcome to Your Vue.js App"/>
   </div>
