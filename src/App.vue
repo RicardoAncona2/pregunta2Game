@@ -1,17 +1,20 @@
 <template>
-  <div style="background-color:#7856D4;">
+  <div>
 
+    <Home></Home>
     <SpinWheel msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
 import SpinWheel from './components/SpinWheel.vue'
+import Home from './components/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    SpinWheel
+    SpinWheel,
+    Home
   }
 }
 </script>
@@ -24,5 +27,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: #7856d4;
 }
+
 </style>
