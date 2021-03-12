@@ -1,5 +1,5 @@
 <template>
-  <div :style="myStyle" id="wrapper">
+  <div :style="myStyle">
     <SpinWheel />
     <sample-question />
   </div>
@@ -19,7 +19,7 @@ export default {
   data(){
     return{
              myStyle:{
-            backgroundColor:"#7957D5" 
+            backgroundColor:"#6957D5" 
             }
   
   }}}
@@ -27,9 +27,6 @@ export default {
 </script>
 
 <style>
-#wrapper{
-   
 
-}
 
 </style>
