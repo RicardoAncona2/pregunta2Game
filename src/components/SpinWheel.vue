@@ -120,7 +120,6 @@ export default {
       });
     },
     playSound(){
-      console.log("playing audio")
       const audio = new Audio(require('../assets/wheelSound.wav'))
       audio.play()
     }
