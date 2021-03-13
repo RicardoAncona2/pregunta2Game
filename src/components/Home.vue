@@ -1,7 +1,5 @@
 <template>
 <div>
-
-
 <h3 class="title is-3 has-text-centered">BIENVENIDO, DISFRUTA DEL JUEGO DE TRIVIA DEL MOMENTO!</h3>
 
 <div class="buttons are-medium">
@@ -14,7 +12,19 @@
 
 <script>
 export default {
-    name: 'Home'
+    name: 'Home',
+
+    play(){
+      this.playBackgroundM()
+
+    },
+    methods:{
+      playBackgroundM(){
+        console.log("MusicFondo")
+        const audio = new Audio(require('../assets/background.mp3'))
+        audio.play
+      }
+    }
 
 }
 </script>

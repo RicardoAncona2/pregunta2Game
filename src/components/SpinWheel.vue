@@ -128,9 +128,4 @@ export default {
 };
 </script>
 <style>
-.column is-half {
-margin-left: auto;
-margin-right: auto;
-}
-
 </style>
