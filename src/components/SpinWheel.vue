@@ -24,6 +24,7 @@ import FortuneWheel from "vue-fortune-wheel";
 import "vue-fortune-wheel/lib/vue-fortune-wheel.css";
 const Swal = require("sweetalert2");
 export default {
+  props: ["wheel","question"],
   components: {
     FortuneWheel,
   },
@@ -109,7 +110,11 @@ export default {
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
-      });
+      }).then(()=> {
+
+    this.closeWheel(); // this should execute now
+
+})
     },
     // Simulate the request back-end interface, verified: whether to pass the verification, duration: delay time
     DoServiceVerify(verified, duration) {
@@ -122,6 +127,10 @@ export default {
     playSound(){
       const audio = new Audio(require('../assets/wheelSound.wav'))
       audio.play()
+    },
+    closeWheel(){
+    this.wheel.active=false
+    this.question.active=true
     }
   },
 };
