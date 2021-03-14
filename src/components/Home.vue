@@ -3,7 +3,7 @@
 <h3 class="title is-3 has-text-centered">BIENVENIDO, DISFRUTA DEL JUEGO DE TRIVIA DEL MOMENTO!</h3>
 
 <div class="buttons are-medium">
-  <button class="button is-link">JUGAR!</button>
+  <button class="button is-link" @click="wheel.active=true,home.active=false">JUGAR!</button>
 </div>
     <br>
 <!-- before using this component import it in app.vue, just like SpinWheel component--></div>
@@ -13,8 +13,8 @@
 <script>
 export default {
     name: 'Home',
-
-    play(){
+    props: ["wheel","home"],
+    mounted(){
       this.playBackgroundM()
 
     },
@@ -22,7 +22,7 @@ export default {
       playBackgroundM(){
         console.log("MusicFondo")
         const audio = new Audio(require('../assets/background.mp3'))
-        audio.play
+        audio.play()
       }
     }
 
