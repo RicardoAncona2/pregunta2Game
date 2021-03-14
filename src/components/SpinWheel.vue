@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color:#7856D4;">
+  <div>
     <!-- type: image -->
     <div class="columns is-mobile is-centered">
       <div class="column is-half">
@@ -126,4 +126,5 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+</style>
