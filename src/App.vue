@@ -2,10 +2,11 @@
   <div>
 
     <Home></Home>
-    <SpinWheel msg="Welcome to Your Vue.js App"/>
+ 
   <div :style="myStyle">
     <SpinWheel />
     <sample-question />
+  </div>
   </div>
 </template>
 
@@ -30,8 +31,6 @@ export default {
          }}}
 </script>
 
-
-</script>
 
 <style>
 
