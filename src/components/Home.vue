@@ -11,20 +11,14 @@
 </template>
 
 <script>
+import music from './tools/Music'
 export default {
     name: 'Home',
     props: ["wheel","home"],
     mounted(){
-      this.playBackgroundM()
+      music.manageHomeMusic('play')
 
     },
-    methods:{
-      playBackgroundM(){
-        console.log("MusicFondo")
-        const audio = new Audio(require('../assets/background.mp3'))
-        audio.play()
-      }
-    }
 
 }
 </script>
