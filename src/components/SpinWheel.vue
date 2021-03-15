@@ -23,6 +23,7 @@
 import FortuneWheel from "vue-fortune-wheel";
 import "vue-fortune-wheel/lib/vue-fortune-wheel.css";
 const Swal = require("sweetalert2");
+import music from './tools/Music'
 export default {
   props: ["wheel","question"],
   components: {
@@ -98,7 +99,7 @@ export default {
         });
         return;
       }
-      this.playSound()
+      music.manageWheel('play')
       console.log("onCanvasRotateStart");
       
     },
@@ -124,10 +125,7 @@ export default {
         }, duration);
       });
     },
-    playSound(){
-      const audio = new Audio(require('../assets/wheelSound.wav'))
-      audio.play()
-    },
+ 
     closeWheel(){
     this.wheel.active=false
     this.question.active=true
