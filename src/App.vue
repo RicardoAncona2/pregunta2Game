@@ -2,8 +2,8 @@
   <div>
     <Home :home="home" :wheel="wheel" v-if="home.active"></Home>
     <div :style="myStyle">
-      <SpinWheel v-if="wheel.active" :wheel="wheel" :question="question"/>
-      <sample-question v-if="question.active"/>
+      <SpinWheel v-if="wheel.active" :wheel="wheel"  :question="question"/>
+      <sample-question  :wheel="wheel" v-if="question.active"/>
     </div>
   </div>
 </template>
@@ -19,15 +19,17 @@ export default {
     SpinWheel,
     Home,
     SampleQuestion,
+    
   },
   data() {
     return {
       myStyle: {
         backgroundColor: "#6957D5",
       },
-      wheel:{active:false},
+      wheel:{active:false,winner:"old winner"},
       home:{active:true},
-      question:{active:false}
+      question:{active:false},
+     
     };
   },
 };

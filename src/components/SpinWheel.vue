@@ -24,6 +24,7 @@ import FortuneWheel from "vue-fortune-wheel";
 import "vue-fortune-wheel/lib/vue-fortune-wheel.css";
 const Swal = require("sweetalert2");
 import music from './tools/Music'
+
 export default {
   props: ["wheel","question"],
   components: {
@@ -40,8 +41,8 @@ export default {
       prizes: [
         {
           id: 1, //* The unique id of each prize, an integer greater than 0
-          name: "Matemáticas", // Prize name, display value when type is canvas (this parameter is not needed when type is image)
-          value: "Matemáticas!", //* Prize value, return value after spinning
+          name: "Matematicas", // Prize name, display value when type is canvas (this parameter is not needed when type is image)
+          value: "Matematicas!", //* Prize value, return value after spinning
           description: "¿2+2= ∞?",
           bgColor: "#45ace9", // Background color (no need for this parameter when type is image)
           color: "#ffffff", // Font color (this parameter is not required when type is image)
@@ -70,7 +71,7 @@ export default {
         },
         {
           id: 4,
-          name: "Geografía",
+          name: "Geografia",
           value: "Geografía!",
           description: "¿La tierra es plana?",
           bgColor: "#F75C1E",
@@ -112,8 +113,7 @@ export default {
         imageHeight: 200,
         imageAlt: "Custom image",
       }).then(()=> {
-
-    this.closeWheel(); // this should execute now
+    this.closeWheel(prize.name); 
 
 })
     },
@@ -126,9 +126,11 @@ export default {
       });
     },
  
-    closeWheel(){
+    closeWheel(winner){
+    this.wheel.winner=winner
     this.wheel.active=false
     this.question.active=true
+
     }
   },
 };
