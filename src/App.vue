@@ -4,6 +4,9 @@
     <div :style="myStyle">
       <SpinWheel v-if="wheel.active" :wheel="wheel"  :question="question"/>
       <sample-question  :wheel="wheel" v-if="question.active"/>
+      <YouWon></YouWon>
+      <YouLost></YouLost>
+      
     </div>
   </div>
 </template>
@@ -12,6 +15,8 @@
 import SpinWheel from "./components/SpinWheel.vue";
 import Home from "./components/Home.vue";
 import SampleQuestion from "./components/SampleQuestion.vue";
+import YouWon from "./components/YouWon.vue";
+import YouLost from "./components/YouLost.vue";
 
 export default {
   name: "App",
@@ -19,6 +24,8 @@ export default {
     SpinWheel,
     Home,
     SampleQuestion,
+    YouWon,
+    YouLost,
     
   },
   data() {
