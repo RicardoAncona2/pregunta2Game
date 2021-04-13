@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- type: image -->
+    <!-- type: image --><h1 class="title is-3 has-text-centered">Gira la ruleta !</h1>
     <div class="columns is-mobile is-centered">
       <div class="column is-half">
     

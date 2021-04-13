@@ -1,8 +1,16 @@
 <template>
   <div>
+    <vue-countdown
+      :time="1 * 1 * 1 * seconds * 1000"
+      v-slot="{ seconds }"
+      :key="contador"
+      class="title is-3 has-text-centered"
+    >
+      Tiempo Restante: {{ seconds }} segundos.
+    </vue-countdown>
+    <h1 v-if="seconds == 0">TIEMPO AGOTADO {{ seconds }}</h1>
     <div v-for="(element, index) in questionslist" v-bind:key="index">
-
-      <div v-show="index==contador">
+      <div v-show="index == contador">
         <div
           class="is-family-sans-serif 
             has-text-centered 
@@ -63,13 +71,21 @@
 import Swal from "sweetalert2";
 import music from "./tools/Music";
 import questions from "./tools/Questions";
+import VueCountdown from "@chenfengyuan/vue-countdown";
+
 export default {
+  components: {
+    VueCountdown,
+  },
   data() {
     return {
       questionslist: [],
       rightAnswer: "Felicidades, respuesta correcta!",
       wrongAnswer: "Oops parece que te equivocaste",
       contador: 0,
+      seconds: 15,
+      defaultKey: "defaultkey",
+      aciertos:0
     };
   },
   props: ["wheel"],
@@ -89,6 +105,7 @@ export default {
     if (this.wheel.winner == "Sociales") {
       this.questionslist = questions.Sociales;
     }
+    this.countMillis();
   },
   methods: {
     answerQuestion(answer, correct) {
@@ -99,6 +116,8 @@ export default {
         message = this.rightAnswer;
         imgUrl =
           "https://definicion.de/wp-content/uploads/2017/01/Correcto.jpg";
+          this.aciertos+=1;
+          alert(this.aciertos)
       } else {
         message = this.wrongAnswer;
         imgUrl =
@@ -113,22 +132,34 @@ export default {
         imageHeight: 200,
         imageAlt: "Custom image",
         confirmButtonText: "Siguiente pregunta",
+        allowOutsideClick: false,
+        timeOut: "",
       }).then(() => {
         for (let i = 0; i < this.questionslist.length; i++) {
-          console.log("hey");
           if (i != this.questionslist.length - 1) {
             this.questionslist[i] = this.questionslist[i + 1];
           }
         }
+        this.seconds = 15;
+        this.defaultKey = this.defaultKey + this.contador;
         this.contador++;
+        clearTimeout(this.timeOut);
+        this.countMillis();
       });
     },
+
     validateAnswer(answer, correcta) {
       if (answer == correcta) {
         return true;
       } else {
         return false;
       }
+    },
+    countMillis() {
+      this.timeOut = setTimeout(
+        () => this.answerQuestion("time over", "not answred"),
+        this.seconds * 1000
+      );
     },
   },
 };

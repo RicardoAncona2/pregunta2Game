@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <Home :home="home" :wheel="wheel" v-if="home.active"></Home>
     <div :style="myStyle">
       <SpinWheel v-if="wheel.active" :wheel="wheel"  :question="question"/>
@@ -13,12 +14,15 @@ import SpinWheel from "./components/SpinWheel.vue";
 import Home from "./components/Home.vue";
 import SampleQuestion from "./components/SampleQuestion.vue";
 
+
+
 export default {
   name: "App",
   components: {
     SpinWheel,
     Home,
     SampleQuestion,
+
     
   },
   data() {
