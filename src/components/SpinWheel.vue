@@ -1,32 +1,29 @@
 <template>
   <div>
-    <!-- type: image --><h1 class="title is-3 has-text-centered">Gira la ruleta !</h1>
+    <!-- type: image -->
+    <h1 class="title is-3 has-text-centered">Gira la ruleta !</h1>
     <div class="columns is-mobile is-centered">
-      <div class="column is-half">
-    
-              <FortuneWheel
-      style="width: 500px"
-      :canvas="canvasOptions"
-      :prizes="prizes"
-      @rotateStart="onCanvasRotateStart"
-      @rotateEnd="onRotateEnd"
-     
-    />
-
+      <div class="title is-3 has-text-centered">
+        <FortuneWheel
+          style="width: 450px"
+          :canvas="canvasOptions"
+          :prizes="prizes"
+          @rotateStart="onCanvasRotateStart"
+          @rotateEnd="onRotateEnd"
+        />
       </div>
     </div>
     <!-- type: canvas -->
-
   </div>
 </template>
 <script>
 import FortuneWheel from "vue-fortune-wheel";
 import "vue-fortune-wheel/lib/vue-fortune-wheel.css";
 const Swal = require("sweetalert2");
-import music from './tools/Music'
+import music from "./tools/Music";
 
 export default {
-  props: ["wheel","question"],
+  props: ["wheel", "question"],
   components: {
     FortuneWheel,
   },
@@ -36,7 +33,7 @@ export default {
       canvasOptions: {
         borderWidth: 12,
         borderColor: "#584b43",
-        fontSize:32
+        fontSize: 32,
       },
       prizes: [
         {
@@ -100,9 +97,8 @@ export default {
         });
         return;
       }
-      music.manageWheel('play')
+      music.manageWheel("play");
       console.log("onCanvasRotateStart");
-      
     },
     onRotateEnd(prize) {
       Swal.fire({
@@ -112,10 +108,9 @@ export default {
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
-      }).then(()=> {
-    this.closeWheel(prize.name); 
-
-})
+      }).then(() => {
+        this.closeWheel(prize.name);
+      });
     },
     // Simulate the request back-end interface, verified: whether to pass the verification, duration: delay time
     DoServiceVerify(verified, duration) {
@@ -125,15 +120,13 @@ export default {
         }, duration);
       });
     },
- 
-    closeWheel(winner){
-    this.wheel.winner=winner
-    this.wheel.active=false
-    this.question.active=true
 
-    }
+    closeWheel(winner) {
+      this.wheel.winner = winner;
+      this.wheel.active = false;
+      this.question.active = true;
+    },
   },
 };
 </script>
-<style>
-</style>
+<style></style>

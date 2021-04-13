@@ -1,65 +1,70 @@
 <template>
   <div>
-    <vue-countdown
-      :time="1 * 1 * 1 * seconds * 1000"
-      v-slot="{ seconds }"
-      :key="contador"
-      class="title is-3 has-text-centered"
-    >
-      Tiempo Restante: {{ seconds }} segundos.
-    </vue-countdown>
-    <h1 v-if="seconds == 0">TIEMPO AGOTADO {{ seconds }}</h1>
-    <div v-for="(element, index) in questionslist" v-bind:key="index">
-      <div v-show="index == contador">
-        <div
-          class="is-family-sans-serif 
+    <div v-if="questionslist.length == contador">
+      <you-won v-if="winner" :aciertos="aciertos"></you-won>
+      <you-lost v-else :aciertos="aciertos"></you-lost>
+    </div>
+    <div v-else>
+      <vue-countdown
+        :time="1 * 1 * 1 * seconds * 1000"
+        v-slot="{ seconds }"
+        :key="contador"
+        class="title is-3 has-text-centered"
+      >
+        Tiempo Restante: {{ seconds }} segundos.
+      </vue-countdown>
+      <div v-for="(element, index) in questionslist" v-bind:key="index">
+        <div v-show="index == contador">
+          <div
+            class="is-family-sans-serif 
             has-text-centered 
             has-text-weight-bold 
             card
             notification is-primary
             "
-          allow="autoplay"
-        >
-          <strong>{{ element.pregunta }}</strong
-          ><br />
-          <img :src="element.imgPath" style="width:330px;height:190px;" />
-        </div>
-        <div class="columns">
-          <div class="column is-half ">
-            <button
-              class="button is-info is-large is-fullwidth is-rounded btn3d"
-              @click="answerQuestion(element.opcionA, element.correcta)"
-            >
-              <h1>A) {{ element.opcionA }}</h1>
-            </button>
+            allow="autoplay"
+          >
+            <strong>{{ element.pregunta }}</strong
+            ><br />
+            <img :src="element.imgPath" style="width:330px;height:190px;" />
           </div>
-          <div class="column  is-half" style="background-color:#red;">
-            <button
-              class="button is-success is-large is-fullwidth is-rounded btn3d"
-              @click="answerQuestion(element.opcionB, element.correcta)"
-            >
-              <h1>B) {{ element.opcionB }}</h1>
-            </button>
+          <div class="columns">
+            <div class="column is-half ">
+              <button
+                class="button is-info is-large is-fullwidth is-rounded btn3d"
+                @click="answerQuestion(element.opcionA, element.correcta)"
+              >
+                <h1>A) {{ element.opcionA }}</h1>
+              </button>
+            </div>
+            <div class="column  is-half" style="background-color:#red;">
+              <button
+                class="button is-success is-large is-fullwidth is-rounded btn3d"
+                @click="answerQuestion(element.opcionB, element.correcta)"
+              >
+                <h1>B) {{ element.opcionB }}</h1>
+              </button>
+            </div>
           </div>
-        </div>
-        <br />
-        <div class="columns">
-          <div class="column is-half">
-            <button
-              class="button is-warning is-large is-fullwidth is-rounded btn3d"
-              @click="answerQuestion(element.opcionC, element.correcta)"
-            >
-              <h1>C) {{ element.opcionC }}</h1>
-            </button>
-          </div>
+          <br />
+          <div class="columns">
+            <div class="column is-half">
+              <button
+                class="button is-warning is-large is-fullwidth is-rounded btn3d"
+                @click="answerQuestion(element.opcionC, element.correcta)"
+              >
+                <h1>C) {{ element.opcionC }}</h1>
+              </button>
+            </div>
 
-          <div class="column is-half">
-            <button
-              class="button is-danger is-large is-fullwidth is-rounded btn3d"
-              @click="answerQuestion(element.opcionD, element.correcta)"
-            >
-              <h1>D) {{ element.opcionD }}</h1>
-            </button>
+            <div class="column is-half">
+              <button
+                class="button is-danger is-large is-fullwidth is-rounded btn3d"
+                @click="answerQuestion(element.opcionD, element.correcta)"
+              >
+                <h1>D) {{ element.opcionD }}</h1>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -72,10 +77,13 @@ import Swal from "sweetalert2";
 import music from "./tools/Music";
 import questions from "./tools/Questions";
 import VueCountdown from "@chenfengyuan/vue-countdown";
-
+import YouLost from "./YouLost";
+import YouWon from "./YouWon";
 export default {
   components: {
     VueCountdown,
+    YouWon,
+    YouLost,
   },
   data() {
     return {
@@ -85,7 +93,8 @@ export default {
       contador: 0,
       seconds: 15,
       defaultKey: "defaultkey",
-      aciertos:0
+      aciertos: 0,
+      winner: false,
     };
   },
   props: ["wheel"],
@@ -105,10 +114,11 @@ export default {
     if (this.wheel.winner == "Sociales") {
       this.questionslist = questions.Sociales;
     }
-    this.countMillis();
+    this.startTimer();
   },
   methods: {
     answerQuestion(answer, correct) {
+      this.stopTimer();
       let message = "";
       let imgUrl = "";
       let validated = this.validateAnswer(answer, correct);
@@ -116,8 +126,7 @@ export default {
         message = this.rightAnswer;
         imgUrl =
           "https://definicion.de/wp-content/uploads/2017/01/Correcto.jpg";
-          this.aciertos+=1;
-          alert(this.aciertos)
+        this.aciertos += 1;
       } else {
         message = this.wrongAnswer;
         imgUrl =
@@ -135,16 +144,19 @@ export default {
         allowOutsideClick: false,
         timeOut: "",
       }).then(() => {
-        for (let i = 0; i < this.questionslist.length; i++) {
-          if (i != this.questionslist.length - 1) {
-            this.questionslist[i] = this.questionslist[i + 1];
-          }
-        }
         this.seconds = 15;
-        this.defaultKey = this.defaultKey + this.contador;
+        this.defaultKey = this.defaultKey + this.contador; //redfine key to re-render countDown
         this.contador++;
-        clearTimeout(this.timeOut);
-        this.countMillis();
+        if (this.contador == this.questionslist.length) {
+          music.manageQuestionMusic("pause");
+          if (this.aciertos == this.questionslist.length) {
+            this.winner = true;
+          } else {
+            this.winner = false;
+          }
+        } else {
+          this.startTimer();
+        }
       });
     },
 
@@ -155,11 +167,14 @@ export default {
         return false;
       }
     },
-    countMillis() {
+    startTimer() {
       this.timeOut = setTimeout(
         () => this.answerQuestion("time over", "not answred"),
         this.seconds * 1000
       );
+    },
+    stopTimer() {
+      clearTimeout(this.timeOut);
     },
   },
 };
