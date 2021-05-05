@@ -17,6 +17,24 @@ const Matematicas = [
     correcta: "0 dedos",
     imgPath:"https://www.hogarmania.com/archivos/201911/peces-848x477x80xX.jpg"
   },
+  {
+    pregunta: "De que color es el semaforo?",
+    opcionA: "amarillo",
+    opcionB: "rojo",
+    opcionC: "verde",
+    opcionD: "azul",
+    correcta: "amarillo",
+    imgPath:"https://i.blogs.es/d754b0/semaf/450_1000.jpg"
+  },
+  {
+    pregunta: "cuantos dedos tiene la mano?",
+    opcionA: "1",
+    opcionB: "3",
+    opcionC: "4",
+    opcionD: "5",
+    correcta: "5",
+    imgPath:"https://image.freepik.com/foto-gratis/recortar-mano-blanco_23-2147795497.jpg"
+  },
 ];
 const Geografia = [
   {
@@ -36,6 +54,24 @@ const Geografia = [
     opcionD: "3 dedos",
     correcta: "0 dedos",
     imgPath:"https://www.hogarmania.com/archivos/201911/peces-848x477x80xX.jpg"
+  },
+  {
+    pregunta: "De que color es el semaforo?",
+    opcionA: "amarillo",
+    opcionB: "rojo",
+    opcionC: "verde",
+    opcionD: "azul",
+    correcta: "amarillo",
+    imgPath:"https://i.blogs.es/d754b0/semaf/450_1000.jpg"
+  },
+  {
+    pregunta: "cuantos dedos tiene la mano?",
+    opcionA: "1",
+    opcionB: "3",
+    opcionC: "4",
+    opcionD: "5",
+    correcta: "5",
+    imgPath:"https://image.freepik.com/foto-gratis/recortar-mano-blanco_23-2147795497.jpg"
   },
 ];
 const Sociales = [
@@ -57,6 +93,24 @@ const Sociales = [
     correcta: "0 dedos",
     imgPath:"https://www.hogarmania.com/archivos/201911/peces-848x477x80xX.jpg"
   },
+  {
+    pregunta: "De que color es el semaforo?",
+    opcionA: "amarillo",
+    opcionB: "rojo",
+    opcionC: "verde",
+    opcionD: "azul",
+    correcta: "amarillo",
+    imgPath:"https://i.blogs.es/d754b0/semaf/450_1000.jpg"
+  },
+  {
+    pregunta: "cuantos dedos tiene la mano?",
+    opcionA: "1",
+    opcionB: "3",
+    opcionC: "4",
+    opcionD: "5",
+    correcta: "5",
+    imgPath:"https://image.freepik.com/foto-gratis/recortar-mano-blanco_23-2147795497.jpg"
+  },
 ];
 const Historia = [
   {
@@ -76,6 +130,24 @@ const Historia = [
     opcionD: "3 dedos",
     correcta: "0 dedos",
     imgPath:"https://www.hogarmania.com/archivos/201911/peces-848x477x80xX.jpg"
+  },
+  {
+    pregunta: "De que color es el semaforo?",
+    opcionA: "amarillo",
+    opcionB: "rojo",
+    opcionC: "verde",
+    opcionD: "azul",
+    correcta: "amarillo",
+    imgPath:"https://i.blogs.es/d754b0/semaf/450_1000.jpg"
+  },
+  {
+    pregunta: "cuantos dedos tiene la mano?",
+    opcionA: "1",
+    opcionB: "3",
+    opcionC: "4",
+    opcionD: "5",
+    correcta: "5",
+    imgPath:"https://image.freepik.com/foto-gratis/recortar-mano-blanco_23-2147795497.jpg"
   },
 ];
 
