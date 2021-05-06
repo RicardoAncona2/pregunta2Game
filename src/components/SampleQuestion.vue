@@ -10,6 +10,7 @@
         v-slot="{ seconds }"
         :key="contador"
         class="title is-3 has-text-centered"
+        v-show="showTimer"
       >
         Tiempo Restante: {{ seconds }} segundos.
       </vue-countdown>
@@ -34,7 +35,7 @@
                 class="button is-info is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionA, element.correcta)"
               >
-                <h1>A) {{ element.opcionA }}</h1>
+                <h3 class="fontTitle">A) {{ element.opcionA }}</h3>
               </button>
             </div>
             <div class="column  is-half" style="background-color:#red;">
@@ -42,7 +43,7 @@
                 class="button is-success is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionB, element.correcta)"
               >
-                <h1>B) {{ element.opcionB }}</h1>
+                <h3 class="fontTitle">B) {{ element.opcionB }}</h3>
               </button>
             </div>
           </div>
@@ -53,7 +54,7 @@
                 class="button is-warning is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionC, element.correcta)"
               >
-                <h1 >C) {{ element.opcionC }}</h1>
+                <h3 class="fontTitle">C) {{ element.opcionC }}</h3>
               </button>
             </div>
 
@@ -62,7 +63,7 @@
                 class="button is-danger is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionD, element.correcta)"
               >
-                <h1 v-if="element.opcionD">D) {{ element.opcionD }}</h1>
+                <h3 v-if="element.opcionD" class="fontTitle">D) {{ element.opcionD }}</h3>
               </button>
             </div>
           </div>
@@ -95,6 +96,7 @@ export default {
       defaultKey: "defaultkey",
       aciertos: 0,
       winner: false,
+      showTimer:true
     };
   },
   props: ["wheel"],
@@ -118,6 +120,7 @@ export default {
   },
   methods: {
     answerQuestion(answer, correct) {
+      this.showTimer=false
       this.stopTimer();
       let message = "";
       let imgUrl = "";
@@ -144,12 +147,13 @@ export default {
         allowOutsideClick: false,
         timeOut: "",
       }).then(() => {
+        this.showTimer=true
         this.seconds = 15;
         this.defaultKey = this.defaultKey + this.contador; //redfine key to re-render countDown
         this.contador++;
         if (this.contador == this.questionslist.length) {
           music.manageQuestionMusic("pause");
-          if (this.aciertos == this.questionslist.length) {
+          if (this.aciertos >6) {
             this.winner = true;
           } else {
             this.winner = false;
@@ -196,5 +200,9 @@ export default {
     0 8px 0 0 #adadad, 0 8px 0 1px rgba(0, 0, 0, 0.4),
     0 8px 8px 1px rgba(0, 0, 0, 0.5);
   background-color: #fff;
+  
+}
+.fontTitle{
+font-size:79%;
 }
 </style>

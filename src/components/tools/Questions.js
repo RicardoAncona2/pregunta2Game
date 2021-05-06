@@ -279,11 +279,11 @@ function createMix() {
 while (i>-1) {
 console.log("j: ",j)
   j = Math.floor(Math.random() * (i));
-  if(i>6){//7 8 9
+  if(i>6){
     Mix.push(DisenoGrafico[nums[j]]);
-  }else if(i>3 && i<7){ //4 5 6
+  }else if(i>3 && i<7){ 
     Mix.push(Fotografia[nums[j]]);
-  }else if(i>=0 && i<4){//0 1 2 3
+  }else if(i>=0 && i<4){
   Mix.push(Arte[nums[j]]);
   }
   nums.splice(j,1);
