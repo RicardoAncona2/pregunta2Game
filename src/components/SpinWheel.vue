@@ -45,7 +45,7 @@ export default {
           description: "",
           bgColor: "#45ace9", // Background color (no need for this parameter when type is image)
           color: "#ffffff", // Font color (this parameter is not required when type is image)
-          probability: 0, //* Probability, up to 4 decimal places (the sum of the probabilities of all prizes
+          probability: 25, //* Probability, up to 4 decimal places (the sum of the probabilities of all prizes
           weight: 1, // Weight, if useWeight is true, the probability is calculated by weight (weight must be an integer), so probability is invalid
           imageUrl:"https://conceptodefinicion.de/wp-content/uploads/2020/11/Diseno-grafico.jpg"
         },
@@ -56,7 +56,7 @@ export default {
           description: "",
           bgColor: "#dd3832",
           color: "#ffffff",
-          probability:0,
+          probability:25,
           weight: 1,
           imageUrl:"https://www.diainternacionalde.com/imagenes/dias/08-19_dia-mundial-de-la-fotografia.jpg"
         },
@@ -67,7 +67,7 @@ export default {
           description: "",
           bgColor: "green",
           color: "#ffffff",
-          probability: 0,
+          probability: 25,
           weight: 1,
           imageUrl:"https://concepto.de/wp-content/uploads/2018/02/artes-plasticas-cuadro-min-e1519328319772.jpg"
         },
@@ -78,7 +78,7 @@ export default {
           description: "",
           bgColor: "#F75C1E",
           color: "#ffffff",
-          probability: 100,
+          probability: 25,
           weight: 1,
           imageUrl:"https://animatek.es/wp-content/uploads/2017/02/banner_dise%C3%B1o-grafico_600X400.jpg"
         },
