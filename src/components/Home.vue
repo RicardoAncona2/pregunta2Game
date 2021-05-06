@@ -1,10 +1,10 @@
 <template>
 <div>
   <div id="title">
-<h3 class="title is-3 has-text-centered">¡BIENVENIDO, DISFRUTA DEL JUEGO DE TRIVIA DEL MOMENTO!</h3>
+<h3 class="title is-3 has-text-centered">¡BIENVENIDO, DISFRUTA DEL JUEGO DE TRIVIA!</h3>
   </div>
     <br>
-    <img src="https://img.dtcn.com/image/digitaltrends_es/1500x500-416x416.png">
+    <img src="https://encolombia.com/wp-content/uploads/2012/11/Arte-Abstracto.jpg">
 <div class="buttons are-medium">
   <button class="button is-link" @click="wheel.active=true,home.active=false">JUGAR!</button>
 </div>

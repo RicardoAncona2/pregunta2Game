@@ -26,7 +26,7 @@
           >
             <strong>{{ element.pregunta }}</strong
             ><br />
-            <img :src="element.imgPath" style="width:330px;height:190px;" />
+            <img :src="require(`${element.imgPath}`)" style="width:330px;height:190px;" />
           </div>
           <div class="columns">
             <div class="column is-half ">
@@ -48,21 +48,21 @@
           </div>
           <br />
           <div class="columns">
-            <div class="column is-half">
+            <div class="column is-half" v-if="element.opcionC">
               <button
                 class="button is-warning is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionC, element.correcta)"
               >
-                <h1>C) {{ element.opcionC }}</h1>
+                <h1 >C) {{ element.opcionC }}</h1>
               </button>
             </div>
 
-            <div class="column is-half">
+            <div class="column is-half" v-if="element.opcionD">
               <button
                 class="button is-danger is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionD, element.correcta)"
               >
-                <h1>D) {{ element.opcionD }}</h1>
+                <h1 v-if="element.opcionD">D) {{ element.opcionD }}</h1>
               </button>
             </div>
           </div>
@@ -102,17 +102,17 @@ export default {
     music.manageHomeMusic("pause");
     music.manageQuestionMusic("play");
 
-    if (this.wheel.winner == "Matematicas") {
-      this.questionslist = questions.Matematicas;
+    if (this.wheel.winner == "Diseño Grafico") {
+      this.questionslist = questions.DisenoGrafico;
     }
-    if (this.wheel.winner == "Geografia") {
-      this.questionslist = questions.Geografia;
+    if (this.wheel.winner == "Fotografia") {
+      this.questionslist = questions.Fotografia;
     }
-    if (this.wheel.winner == "Historia") {
-      this.questionslist = questions.Geografia;
+    if (this.wheel.winner == "Arte") {
+      this.questionslist = questions.Arte;
     }
-    if (this.wheel.winner == "Sociales") {
-      this.questionslist = questions.Sociales;
+    if (this.wheel.winner == "Mix") {
+      this.questionslist = questions.Mix;
     }
     this.startTimer();
   },

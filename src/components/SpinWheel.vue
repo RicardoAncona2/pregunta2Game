@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- type: image -->
-    <h1 class="title is-3 has-text-centered">Gira la ruleta !</h1>
-    <div class="columns is-mobile is-centered">
-      <div class="title is-3 has-text-centered">
+    <h1 class="title is-3 has-text-centered a">Gira la ruleta !</h1>
+    <div class="columns is-mobile is-centered a">
+      <div class="title is-3 has-text-centered a">
         <FortuneWheel
           style="width: 450px"
           :canvas="canvasOptions"
@@ -34,47 +34,53 @@ export default {
         borderWidth: 12,
         borderColor: "#584b43",
         fontSize: 32,
+        textLength:"50"
+
       },
       prizes: [
         {
           id: 1, //* The unique id of each prize, an integer greater than 0
-          name: "Matematicas", // Prize name, display value when type is canvas (this parameter is not needed when type is image)
-          value: "Matematicas!", //* Prize value, return value after spinning
-          description: "¿2+2= ∞?",
+          name: "Diseño Grafico", // Prize name, display value when type is canvas (this parameter is not needed when type is image)
+          value: "Diseño Grafico!", //* Prize value, return value after spinning
+          description: "",
           bgColor: "#45ace9", // Background color (no need for this parameter when type is image)
           color: "#ffffff", // Font color (this parameter is not required when type is image)
-          probability: 25, //* Probability, up to 4 decimal places (the sum of the probabilities of all prizes
+          probability: 0, //* Probability, up to 4 decimal places (the sum of the probabilities of all prizes
           weight: 1, // Weight, if useWeight is true, the probability is calculated by weight (weight must be an integer), so probability is invalid
+          imageUrl:"https://conceptodefinicion.de/wp-content/uploads/2020/11/Diseno-grafico.jpg"
         },
         {
           id: 2,
-          name: "Sociales",
-          value: "¡Sociales!",
-          description: "Esta es la descripcion de sociales...",
+          name: "Fotografia",
+          value: "Fotografia!",
+          description: "",
           bgColor: "#dd3832",
           color: "#ffffff",
-          probability: 25,
+          probability:0,
           weight: 1,
+          imageUrl:"https://www.diainternacionalde.com/imagenes/dias/08-19_dia-mundial-de-la-fotografia.jpg"
         },
         {
           id: 3,
-          name: "Historia",
-          value: "¡Historia!",
-          description: "Habia una vez...",
-          bgColor: "#fef151",
+          name: "Arte",
+          value: "¡Arte!",
+          description: "",
+          bgColor: "green",
           color: "#ffffff",
-          probability: 25,
+          probability: 0,
           weight: 1,
+          imageUrl:"https://concepto.de/wp-content/uploads/2018/02/artes-plasticas-cuadro-min-e1519328319772.jpg"
         },
         {
           id: 4,
-          name: "Geografia",
-          value: "Geografía!",
-          description: "¿La tierra es plana?",
+          name: "Mix",
+          value: "Mix!",
+          description: "",
           bgColor: "#F75C1E",
           color: "#ffffff",
-          probability: 25,
+          probability: 100,
           weight: 1,
+          imageUrl:"https://animatek.es/wp-content/uploads/2017/02/banner_dise%C3%B1o-grafico_600X400.jpg"
         },
       ],
     };
@@ -104,7 +110,7 @@ export default {
       Swal.fire({
         title: prize.value,
         text: prize.description,
-        imageUrl: "https://unsplash.it/400/200",
+        imageUrl: prize.imageUrl,
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
@@ -129,4 +135,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+#a {
+  font-size: 150px;
+}
+</style>
