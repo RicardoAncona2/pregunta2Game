@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- type: image -->
-    <h1 class="title is-3 has-text-centered a">Gira la ruleta !</h1>
+    <h1 class="title is-3 has-text-centered">Gira la ruleta !</h1>
+    <br>
     <div class="columns is-mobile is-centered a">
       <div class="title is-3 has-text-centered a">
         <FortuneWheel
@@ -32,7 +33,7 @@ export default {
       cavansVerify: true, // Whether the turntable in canvas mode is enabled for verification
       canvasOptions: {
         borderWidth: 12,
-        borderColor: "#584b43",
+        borderColor: "white",
         fontSize: 32,
         textLength:"50"
 
@@ -138,5 +139,8 @@ export default {
 <style>
 #a {
   font-size: 150px;
+}
+h1.title{
+    color:white
 }
 </style>

@@ -11,12 +11,17 @@
         TU PUNTAJE ES: {{ aciertos }}
       </h3>
     </div>
+    <buttons></buttons>
   </div>
 </template>
 
 <script>
+import buttons from "./EndFooter";
 export default {
   props: ["aciertos"],
+    components: {
+    buttons
+  },
 };
 </script>
 

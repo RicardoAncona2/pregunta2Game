@@ -4,7 +4,7 @@
 <h3 class="title is-3 has-text-centered">¡BIENVENIDO, DISFRUTA DEL JUEGO DE TRIVIA!</h3>
   </div>
     <br>
-    <img src="https://encolombia.com/wp-content/uploads/2012/11/Arte-Abstracto.jpg">
+    <img src="../assets/Cover.png">
 <div class="buttons are-medium">
   <button class="button is-link" @click="wheel.active=true,home.active=false">JUGAR!</button>
 </div>

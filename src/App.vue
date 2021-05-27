@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       myStyle: {
-        backgroundColor: "#6957D5",
+        backgroundColor: "#653778",
       },
       wheel:{active:false,winner:"old winner"},
       home:{active:true},
@@ -45,9 +45,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #653778;
   margin-top: 60px;
-  background-color: #cb428b;
+  background-color: #653778;
   min-height: 100vh;
 }
 </style>

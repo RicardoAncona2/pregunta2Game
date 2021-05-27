@@ -9,28 +9,30 @@
         :time="1 * 1 * 1 * seconds * 1000"
         v-slot="{ seconds }"
         :key="contador"
-        class="title is-3 has-text-centered"
         v-show="showTimer"
-      >
-        Tiempo Restante: {{ seconds }} segundos.
+        ><h1 class="title is-3 has-text-centered">
+          Tiempo Restante: {{ seconds }} segundos.
+        </h1>
       </vue-countdown>
+      <br />
       <div v-for="(element, index) in questionslist" v-bind:key="index">
         <div v-show="index == contador">
           <div
-            class="is-family-sans-serif 
-            has-text-centered 
-            has-text-weight-bold 
-            card
-            notification is-primary
-            "
+            class="is-family-sans-serif has-text-centered has-text-weight-bold card notification is-primary"
             allow="autoplay"
           >
-            <strong>{{ element.pregunta }}</strong
-            ><br />
-            <img :src="require(`${element.imgPath}`)" style="width:330px;height:190px;" />
+            <h3 class="title is-3 has-text-centered">
+              {{ element.pregunta }}
+            </h3>
+  
+  
+            <img
+              :src="require(`${element.imgPath}`)"
+              style="width: 330px; height: 190px"
+            />
           </div>
           <div class="columns">
-            <div class="column is-half ">
+            <div class="column is-half">
               <button
                 class="button is-info is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionA, element.correcta)"
@@ -38,7 +40,7 @@
                 <h3 class="fontTitle">A) {{ element.opcionA }}</h3>
               </button>
             </div>
-            <div class="column  is-half" style="background-color:#red;">
+            <div class="column is-half" style="background-color: #red">
               <button
                 class="button is-success is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionB, element.correcta)"
@@ -63,7 +65,9 @@
                 class="button is-danger is-large is-fullwidth is-rounded btn3d"
                 @click="answerQuestion(element.opcionD, element.correcta)"
               >
-                <h3 v-if="element.opcionD" class="fontTitle">D) {{ element.opcionD }}</h3>
+                <h3 v-if="element.opcionD" class="fontTitle">
+                  D) {{ element.opcionD }}
+                </h3>
               </button>
             </div>
           </div>
@@ -96,7 +100,7 @@ export default {
       defaultKey: "defaultkey",
       aciertos: 0,
       winner: false,
-      showTimer:true
+      showTimer: true,
     };
   },
   props: ["wheel"],
@@ -120,7 +124,7 @@ export default {
   },
   methods: {
     answerQuestion(answer, correct) {
-      this.showTimer=false
+      this.showTimer = false;
       this.stopTimer();
       let message = "";
       let imgUrl = "";
@@ -147,13 +151,13 @@ export default {
         allowOutsideClick: false,
         timeOut: "",
       }).then(() => {
-        this.showTimer=true
+        this.showTimer = true;
         this.seconds = 15;
         this.defaultKey = this.defaultKey + this.contador; //redfine key to re-render countDown
         this.contador++;
         if (this.contador == this.questionslist.length) {
           music.manageQuestionMusic("pause");
-          if (this.aciertos >6) {
+          if (this.aciertos > 6) {
             this.winner = true;
           } else {
             this.winner = false;
@@ -200,9 +204,8 @@ export default {
     0 8px 0 0 #adadad, 0 8px 0 1px rgba(0, 0, 0, 0.4),
     0 8px 8px 1px rgba(0, 0, 0, 0.5);
   background-color: #fff;
-  
 }
-.fontTitle{
-font-size:79%;
+.fontTitle {
+  font-size: 79%;
 }
 </style>
