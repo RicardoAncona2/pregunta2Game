@@ -6,6 +6,9 @@
     <br>
     <img src="../assets/Cover.png">
 <div class="buttons are-medium">
+  <button class="button is-link" @click="redirect()">
+      REGRESAR
+    </button>
   <button class="button is-link" @click="wheel.active=true,home.active=false">JUGAR!</button>
 </div>
     <br>
@@ -22,6 +25,11 @@ export default {
       music.manageHomeMusic('play')
 
     },
+    methods:{
+          redirect() {
+      window.location.href ="https://galaxtivo.online/"
+    },
+    }
 
 }
 </script>

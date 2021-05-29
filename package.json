@@ -11,6 +11,7 @@
     "@chenfengyuan/vue-countdown": "^1.1.5",
     "buefy": "^0.9.4",
     "core-js": "^3.6.5",
+    "dotenv": "^10.0.0",
     "sweetalert2": "^10.15.5",
     "vue": "^2.6.12",
     "vue-circular-count-down-timer": "^1.0.4",

@@ -277,7 +277,6 @@ function createMix() {
   j = 0
 
 while (i>-1) {
-console.log("j: ",j)
   j = Math.floor(Math.random() * (i));
   if(i>6){
     Mix.push(DisenoGrafico[nums[j]]);
@@ -289,9 +288,7 @@ console.log("j: ",j)
   nums.splice(j,1);
   i--
 }
-console.log(nums)
-console.log(Mix)
-console.log(i)
+
 }
 
 createMix()
